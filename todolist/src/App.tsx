@@ -1,21 +1,22 @@
 import { useState } from "react";
 import { Item } from "./types/Item";
 import { ListItem } from "./components/ListItem/index";
+import { AddArea } from "./components/AddArea";
 
 function App() {
   //Estado chamado list
   const [list, setList] = useState<Item[]>([
-    {
-      id: 1,
-      name: "Jogar lixo fora",
-      done: false
-    },
-    {
-      id: 2,
-      name: "Comprar pao",
-      done: true
-    },
   ]); //Um Array te Item
+
+  const handleAddTask = (taskName: string) => {
+    let newList = [...list]; //Clona lista
+    newList.push({
+      id: list.length + 1, //Adiciona o ultimo id + 1
+      name: taskName, //Pega a string recebida na funcao
+      done: false
+    });//Adiciona o novo item na lista
+    setList(newList); //Atualiza lista
+  }
 
   return (
     <div className="bg-black text-white min-h-screen">
@@ -25,10 +26,11 @@ function App() {
         </h1>
 
         {/* Adicionar nova tarefa */}
+        <AddArea onEnter={handleAddTask}/>{/* Recebo do componente o texto */}
 
         {/* Lista de tarefas */}
         {list.map((item, index)=>(
-          <ListItem key={index} item={item}/>
+          <ListItem key={index} item={item}/> //Lista cada item dentro do Array
         ))}
 
       </div>
