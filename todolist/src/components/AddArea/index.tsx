@@ -10,7 +10,7 @@ export function AddArea({onEnter}: Props) { //Envio para o Componente App a stri
     const handleKeyUp = (e: KeyboardEvent) => {
         if ((e.code === 'Enter' || e.code === 'NumpadEnter') && inputText !== '') {
             onEnter(inputText);
-            setInputText('');
+            setInputText("");
         }
     } //Captura a tecla enter e verifica se o campo esta vazio
 
@@ -24,6 +24,7 @@ export function AddArea({onEnter}: Props) { //Envio para o Componente App a stri
             defaultValue={inputText} //adiciona como valor o que foi digitado no input
             onChange={e=>setInputText(e.target.value)} //inseri o valor digitado no input
             onKeyUp={handleKeyUp} //captura a tecla
+            value={inputText}
             />
         </div>
     );
