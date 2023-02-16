@@ -5,17 +5,22 @@ import { AddArea } from "./components/AddArea";
 
 function App() {
   //Estado chamado list
-  const [list, setList] = useState<Item[]>([
-  ]); //Um Array te Item
+  const [list, setList] = useState<Item[]>([]); //Um Array te Item
 
   const handleAddTask = (taskName: string) => {
-    let newList = [...list]; //Clona lista
+    var newList = [...list]; //Clona lista
     newList.push({
       id: list.length + 1, //Adiciona o ultimo id + 1
       name: taskName, //Pega a string recebida na funcao
       done: false
     });//Adiciona o novo item na lista
     setList(newList); //Atualiza lista
+  }
+
+  const handleRemoveTask = (index: number) => {
+    var newList = [...list];
+    newList.splice(index, 1);//remover o item
+    setList([...newList]);
   }
 
   return (
@@ -30,7 +35,10 @@ function App() {
 
         {/* Lista de tarefas */}
         {list.map((item, index)=>(
-          <ListItem key={index} item={item}/> //Lista cada item dentro do Array
+          <div className="flex bg-purple-200 p-2.5 rounded-lg mb-2.5">
+            <ListItem key={index} item={item} /> {/*Lista cada item dentro do Array*/}
+            <button className="pl-1" onClick={()=>handleRemoveTask(index)}>❌</button>
+          </div>
         ))}
 
       </div>
