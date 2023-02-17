@@ -36,7 +36,7 @@ function App() {
         {/* Lista de tarefas */}
         {list.map((item, index)=>(
           <div className="flex bg-purple-200 p-2.5 rounded-lg mb-2.5">
-            <ListItem key={index} item={item} /> {/*Lista cada item dentro do Array*/}
+            <ListItem key={item.id} item={item} /> {/*Lista cada item dentro do Array*/}
             <button className="pl-1" onClick={()=>handleRemoveTask(index)}>❌</button>
           </div>
         ))}
