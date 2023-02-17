@@ -13,4 +13,4 @@ As ferramentas a seguir estão sendo utilizadas no projeto:
 npm run dev
 ```
 
-Ver a aplicação: 
+Ver a aplicação: https://todolist-phi-woad.vercel.app/
